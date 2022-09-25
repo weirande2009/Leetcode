@@ -3,7 +3,7 @@
 #include <unordered_set>
 using namespace std;
 
-// Algorithm: Take this as a board, for each row is s1 and for each column is s2.
+// Algorithm: Consider this as a board, for each row is s1 and for each column is s2.
 // We start from left-top and the end is right-bottom. We can only move right or 
 
 class Solution {
