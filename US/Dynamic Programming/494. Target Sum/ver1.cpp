@@ -11,12 +11,23 @@ class Solution {
 public:
     int findTargetSumWays(vector<int>& nums, int target) {
         int n = nums.size();
+        if(n == 1){
+            if(nums[0] == target || nums[0] == -target){
+                return 1;
+            }
+            else{
+                return 0;
+            }
+        }
         target = abs(target);
         int sum = accumulate(nums.begin(), nums.end(), 0);
+        if(target > sum){
+            return 0;
+        }
         // dp[i][j] means the ways to add to j before and including nums[i]
         vector<vector<int>> dp(n, vector<int>(2*sum+1, 0));
-        dp[0][nums[0]+sum] = 1;
-        dp[0][sum-nums[0]] = 1;
+        dp[0][nums[0]+sum] += 1;
+        dp[0][sum-nums[0]] += 1;
         for(int i=1; i<n; i++){
             for(int j=0; j<2*sum+1; j++){
                 if(j <= 2*sum-nums[i]){
